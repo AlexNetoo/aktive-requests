@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Clock--Streamline-Nova.svg" opacity="0.5" clip-path="url(#clip0_0_37)">
+<path id="Vector" d="M0.416609 5C0.416609 6.21557 0.899494 7.38136 1.75904 8.2409C2.61858 9.10044 3.78437 9.58333 4.99994 9.58333C6.21552 9.58333 7.38131 9.10044 8.24085 8.2409C9.10039 7.38136 9.58328 6.21557 9.58328 5C9.58328 4.3981 9.46472 3.80211 9.23439 3.24603C9.00406 2.68996 8.66645 2.18469 8.24085 1.75909C7.81525 1.33349 7.30998 0.995883 6.75391 0.765549C6.19783 0.535214 5.60183 0.416663 4.99994 0.416663C4.39805 0.416663 3.80205 0.535214 3.24598 0.765549C2.6899 0.995883 2.18464 1.33349 1.75904 1.75909C1.33343 2.18469 0.995828 2.68996 0.765494 3.24603C0.53516 3.80211 0.416609 4.3981 0.416609 5Z" stroke-width="0.714286" stroke-linejoin="round" stroke="white"/>
+<path id="Vector_2" d="M5 2.45375V5H7.03708" stroke-width="0.714286" stroke-linejoin="round" stroke="white"/>
+</g>
+<defs>
+<clipPath id="clip0_0_37">
+<rect width="10" height="10" fill="white"/>
+</clipPath>
+</defs>
+</svg>
