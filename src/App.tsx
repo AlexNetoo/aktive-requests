@@ -3,7 +3,8 @@ import { initialActive, initialRequests, type Request } from "./data";
 import { Modal } from "./Modal";
 import { A, Icon } from "./ui";
 import { AgencyRequests } from "./Agency";
-import { Subscriptions } from "./Subscriptions";
+import { Subscriptions, seedOffers, type Offer } from "./Subscriptions";
+import { ClientSubscription } from "./ClientSubscription";
 
 const TABS = {
   Client: ["Requests", "Subscription", "Settings"],
@@ -155,6 +156,9 @@ export default function App() {
   const [active, setActive] = useState<Request | null>(initialActive);
   const [list, setList] = useState<Request[]>(initialRequests);
   const [openId, setOpenId] = useState<string | null>(null);
+  const [offers, setOffers] = useState<Offer[]>(seedOffers);
+  const [planId, setPlanId] = useState<string | null>("p1");
+  const [addons, setAddons] = useState<string[]>([]);
 
   const open = openId ? (active?.id === openId ? active : list.find((r) => r.id === openId)) ?? null : null;
 
@@ -185,7 +189,16 @@ export default function App() {
         {role === "Agency" && tab === "Requests" ? (
           <AgencyRequests />
         ) : role === "Agency" && tab === "Subscriptions" ? (
-          <Subscriptions />
+          <Subscriptions offers={offers} setOffers={setOffers} />
+        ) : role === "Client" && tab === "Subscription" ? (
+          <ClientSubscription
+            offers={offers.filter((o) => !o.draft)}
+            planId={planId}
+            setPlanId={setPlanId}
+            addons={addons}
+            setAddons={setAddons}
+            used={active ? 1 : 0}
+          />
         ) : tab !== "Requests" ? (
           <div className="placeholder">{tab} is not part of this design.</div>
         ) : (

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Icon } from "./ui";
 
-type Kind = "plan" | "addon";
-type Offer = {
+export type Kind = "plan" | "addon";
+export type Offer = {
   id: string;
   kind: Kind;
   name: string;
@@ -211,8 +211,14 @@ function Section({ title, empty, cta, items, onAdd, onRemove }: { title: string;
   );
 }
 
-export function Subscriptions() {
-  const [offers, setOffers] = useState<Offer[]>([]);
+export const seedOffers: Offer[] = [
+  { id: "p1", kind: "plan", name: "Starter", description: "One design request at a time.", amount: "499", currency: "USD", period: "Monthly", inclusions: ["Unlimited requests", "48h turnaround"], limit: "1", draft: false },
+  { id: "p2", kind: "plan", name: "Pro", description: "Two requests in parallel.", amount: "899", currency: "USD", period: "Monthly", inclusions: ["Unlimited requests", "24h turnaround", "Priority support"], limit: "2", draft: false },
+  { id: "a1", kind: "addon", name: "Weekly Zoom", description: "A 30 minute sync every week.", amount: "99", currency: "USD", period: "Monthly", inclusions: [], limit: null, draft: false },
+  { id: "a2", kind: "addon", name: "Slack channel", description: "Shared channel with the team.", amount: "49", currency: "USD", period: "Monthly", inclusions: [], limit: null, draft: false },
+];
+
+export function Subscriptions({ offers, setOffers }: { offers: Offer[]; setOffers: React.Dispatch<React.SetStateAction<Offer[]>> }) {
   const [modal, setModal] = useState<Kind | null>(null);
   return (
     <div className="agency">
