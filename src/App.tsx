@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { initialActive, initialRequests, type Request } from "./data";
+import { initialActive, initialAgency, initialRequests, type AgencyRow, type Request } from "./data";
+import { Settings, defaultPrefs, type Prefs } from "./Settings";
+import { Clients, seedClients, type Client } from "./Clients";
 import { Modal } from "./Modal";
 import { A, Icon } from "./ui";
 import { AgencyRequests } from "./Agency";
@@ -157,6 +159,9 @@ export default function App() {
   const [list, setList] = useState<Request[]>(initialRequests);
   const [openId, setOpenId] = useState<string | null>(null);
   const [offers, setOffers] = useState<Offer[]>(seedOffers);
+  const [rows, setRows] = useState<AgencyRow[]>(initialAgency);
+  const [clients, setClients] = useState<Client[]>(() => seedClients(initialAgency));
+  const [prefs, setPrefs] = useState<Prefs>(defaultPrefs);
   const [planId, setPlanId] = useState<string | null>("p1");
   const [addons, setAddons] = useState<string[]>([]);
 
@@ -187,7 +192,11 @@ export default function App() {
       <Nav tab={tab} setTab={setTab} role={role} setRole={setRole} />
       <main className="stage">
         {role === "Agency" && tab === "Requests" ? (
-          <AgencyRequests />
+          <AgencyRequests rows={rows} setRows={setRows} />
+        ) : role === "Agency" && tab === "Clients" ? (
+          <Clients clients={clients} setClients={setClients} rows={rows} setRows={setRows} offers={offers} />
+        ) : tab === "Settings" ? (
+          <Settings agency={role === "Agency"} prefs={prefs} setPrefs={setPrefs} />
         ) : role === "Agency" && tab === "Subscriptions" ? (
           <Subscriptions offers={offers} setOffers={setOffers} />
         ) : role === "Client" && tab === "Subscription" ? (

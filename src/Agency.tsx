@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { initialAgency, STATUSES, STATUS_COLOR, type AgencyRow, type Request, type Status } from "./data";
+import { STATUSES, STATUS_COLOR, type AgencyRow, type Request, type Status } from "./data";
 import { Modal } from "./Modal";
 import { Icon } from "./ui";
 
@@ -38,8 +38,7 @@ function StatusPill({ status, onChange }: { status: Status; onChange: (s: Status
   );
 }
 
-export function AgencyRequests() {
-  const [rows, setRows] = useState<AgencyRow[]>(initialAgency);
+export function AgencyRequests({ rows, setRows }: { rows: AgencyRow[]; setRows: React.Dispatch<React.SetStateAction<AgencyRow[]>> }) {
   const [q, setQ] = useState("");
   const [sort, setSort] = useState<Sort>("Status");
   const [sortOpen, setSortOpen] = useState(false);

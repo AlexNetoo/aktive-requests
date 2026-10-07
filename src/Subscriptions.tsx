@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Icon } from "./ui";
+import { Icon, Toggle } from "./ui";
 
 export type Kind = "plan" | "addon";
 export type Offer = {
@@ -14,12 +14,6 @@ export type Offer = {
   limit: string | null;
   draft: boolean;
 };
-
-const Toggle = ({ on, onChange, label }: { on: boolean; onChange: (v: boolean) => void; label: string }) => (
-  <button className={"toggle" + (on ? " on" : "")} role="switch" aria-checked={on} aria-label={label} onClick={() => onChange(!on)}>
-    <i />
-  </button>
-);
 
 function Select({ value, onChange, options, className }: { value: string; onChange: (v: string) => void; options: string[]; className?: string }) {
   return (
